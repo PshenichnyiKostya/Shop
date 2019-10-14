@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.List;
-
 @Controller
 public class UserController {
 
@@ -50,8 +48,8 @@ public class UserController {
 
     @PostMapping("/filter")
     public String filter(@RequestParam(name = "id") Integer id, Model model) {
-        List<User> userList = userRepository.findById(id);
-        model.addAttribute("users", userList);
+        User user = userRepository.findById(id);
+        model.addAttribute("users", user);
         return "show";
     }
 
